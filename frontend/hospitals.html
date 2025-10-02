@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediLocker - Hospital Explorer</title>
+    <link rel="stylesheet" href="hospitals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Hospital Explorer Section -->
+        <section class="hospital-explorer">
+            <div class="explore-header">
+                <div class="explore-title">EXPLORE</div>
+                <h1>Hospitals Across India</h1>
+                <p class="browse-text">Browse Hospitals by State</p>
+            </div>
+            
+            <div class="states-grid">
+                <!-- Featured States -->
+                <div class="state-card" onclick="openStateHospitals('andhra-pradesh')">
+                    <div class="state-name">Andhra<br>Pradesh</div>
+                    <div class="hospital-count">55+<br><span>Hospitals</span></div>
+                </div>
+                
+                <div class="state-card" onclick="openStateHospitals('telangana')">
+                    <div class="state-name">Telangana<br>& Hyderabad</div>
+                    <div class="hospital-count">67+<br><span>Hospitals</span></div>
+                </div>
+                
+                <div class="state-card" onclick="openStateHospitals('tamil-nadu')">
+                    <div class="state-name">Tamil<br>Nadu</div>
+                    <div class="hospital-count">89+<br><span>Hospitals</span></div>
+                </div>
+                
+                <div class="state-card" onclick="openStateHospitals('maharashtra')">
+                    <div class="state-name">Maharashtra<br>& Mumbai</div>
+                    <div class="hospital-count">229+<br><span>Hospitals</span></div>
+                </div>
+                
+                <div class="state-card" onclick="openStateHospitals('delhi')">
+                    <div class="state-name">Delhi<br>& NCR</div>
+                    <div class="hospital-count">102+<br><span>Hospitals</span></div>
+                </div>
+                
+                <div class="state-card" onclick="openStateHospitals('karnataka')">
+                    <div class="state-name">Karnataka<br>& Bangalore</div>
+                    <div class="hospital-count">176+<br><span>Hospitals</span></div>
+                </div>
+                
+                <div class="state-card" onclick="openStateHospitals('west-bengal')">
+                    <div class="state-name">West Bengal<br>& Kolkata</div>
+                    <div class="hospital-count">65+<br><span>Hospitals</span></div>
+                </div>
+                
+                <div class="state-card view-all-card" onclick="openAllStates()">
+                    <div class="state-name">View<br>All</div>
+                    <div class="hospital-count">28+<br><span>States</span></div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="footer">
+            <p>© 2025 MediLocker. All Rights Reserved.</p>
+        </div>
+    </div>
+
+    <script src="hospitals.js"></script>
+</body>
+</html>

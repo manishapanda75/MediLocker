@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Documents - MediLocker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="#main">Skip to Main Content</a>
+    <button id="increase-font">A+</button>
+    <button id="decrease-font">A-</button>
+  </div>
+
+  <header>
+    <div class="header-content">
+      <div class="logo">MediLocker</div>
+      <div class="tagline">Your Medical Records, Anytime Anywhere</div>
+    </div>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="upload.html" class="active">Upload</a>
+      <a href="search.html">Search</a>
+    </nav>
+    <div class="user-menu">
+      <span id="userGreeting">Welcome, User</span>
+      <button id="logoutBtn">Logout</button>
+    </div>
+  </header>
+
+  <main class="upload-page" id="main">
+    <h1>Upload Medical Documents</h1>
+    
+    <div class="upload-container">
+      <div class="upload-area" id="uploadArea">
+        <div class="upload-icon">📄</div>
+        <h3>Drag & Drop Files Here</h3>
+        <p>or</p>
+        <button class="browse-btn" id="browseBtn">Browse Files</button>
+        <input type="file" id="fileInput" multiple style="display: none;">
+        <p class="file-types">Supported formats: PDF, JPG, PNG, DOC (Max: 10MB)</p>
+      </div>
+
+      <div class="upload-form">
+        <h3>Document Details</h3>
+        <form id="documentForm">
+          <div class="form-group">
+            <label for="docType">Document Type</label>
+            <select id="docType" required>
+              <option value="">Select a category</option>
+              <option value="lab">Lab Report</option>
+              <option value="scan">Scan/Imaging Report</option>
+              <option value="prescription">Prescription</option>
+              <option value="appointment">Appointment/Consultation</option>
+              <option value="hospital">Hospital Record</option>
+              <option value="vaccination">Vaccination Record</option>
+              <option value="certificate">Health Certificate</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="docDate">Date of Document</label>
+            <input type="date" id="docDate" required>
+          </div>
+
+          <div class="form-group">
+            <label for="docProvider">Healthcare Provider</label>
+            <input type="text" id="docProvider" placeholder="Hospital/Clinic Name">
+          </div>
+
+          <div class="form-group">
+            <label for="docNotes">Notes (Optional)</label>
+            <textarea id="docNotes" rows="3" placeholder="Add any relevant notes about this document"></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn" disabled>Upload Document</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="upload-progress" id="uploadProgress" style="display: none;">
+      <h3>Uploading...</h3>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <p id="progressText">0%</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 MediLocker. All Rights Reserved.</p>
+    <div>
+      <a href="about.html">About Us</a> | 
+      <a href="help.html">Help</a> | 
+      <a href="privacy.html">Privacy Policy</a> | 
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script src="upload.js"></script>
+</body>
+</html>
