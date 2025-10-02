@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Records - MediLocker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="#main">Skip to Main Content</a>
+    <button id="increase-font">A+</button>
+    <button id="decrease-font">A-</button>
+  </div>
+
+  <header>
+    <div class="header-content">
+      <div class="logo">MediLocker</div>
+      <div class="tagline">Your Medical Records, Anytime Anywhere</div>
+    </div>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="upload.html">Upload</a>
+      <a href="search.html" class="active">Search</a>
+    </nav>
+    <div class="user-menu">
+      <span id="userGreeting">Welcome, User</span>
+      <button id="logoutBtn">Logout</button>
+    </div>
+  </header>
+
+  <main class="search-page" id="main">
+    <h1>Search Medical Records</h1>
+    
+    <div class="search-container">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search by document name, provider, or notes...">
+        <button id="searchBtn">Search</button>
+      </div>
+      
+      <div class="filter-options">
+        <div class="filter-group">
+          <label for="docTypeFilter">Document Type</label>
+          <select id="docTypeFilter">
+            <option value="">All Types</option>
+            <option value="lab">Lab Report</option>
+            <option value="scan">Scan/Imaging Report</option>
+            <option value="prescription">Prescription</option>
+            <option value="appointment">Appointment/Consultation</option>
+            <option value="hospital">Hospital Record</option>
+            <option value="vaccination">Vaccination Record</option>
+            <option value="certificate">Health Certificate</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <label for="dateFrom">From Date</label>
+          <input type="date" id="dateFrom">
+        </div>
+        
+        <div class="filter-group">
+          <label for="dateTo">To Date</label>
+          <input type="date" id="dateTo">
+        </div>
+      </div>
+    </div>
+    
+    <div class="search-results" id="searchResults">
+      <!-- Search results will be displayed here -->
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 MediLocker. All Rights Reserved.</p>
+    <div>
+      <a href="about.html">About Us</a> | 
+      <a href="help.html">Help</a> | 
+      <a href="privacy.html">Privacy Policy</a> | 
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script src="search.js"></script>
+</body>
+</html>

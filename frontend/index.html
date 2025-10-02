@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediLocker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Accessibility top bar -->
+  <div class="top-bar">
+    <a href="#main">Skip to Main Content</a>
+    <button id="increase-font">A+</button>
+    <button id="decrease-font">A-</button>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-content">
+      <div class="logo">MediLocker</div>
+      <div class="tagline">Your Medical Records, Anytime Anywhere</div>
+    </div>
+    <nav class="main-nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="upload.html">Upload</a>
+      <a href="search.html">Search</a>
+    </nav>
+    <!-- <button class="login-btn" id="loginBtn">Login</button> -->
+      <a href="login.html" class="login-btn" id="loginBtn">Login</a>
+  </header>
+
+  <!-- Hero slider -->
+  <section class="hero" id="main">
+    <div class="slide active"><img src="heroimage1.jpg"></div>
+    <div class="slide"><img src="C:\Users\panda\Downloads\Gemini_Generated_Image_4hr0834hr0834hr0.png"></div>
+    <div class="slide"><img src="https://via.placeholder.com/1200x300/3399ff/ffffff?text=MediLocker+Slide+3"></div>
+  </section>
+
+<section class="features">
+  <h2>EXPLORE</h2>
+  <h3>Documents by Categories</h3>
+
+  <div class="feature-grid">
+    <a href="lab-reports.html" class="feature-card">
+      <div class="icon-circle blue">🧪</div>
+      <span>Lab Reports</span>
+      <span class="arrow">›</span>
+    </a>
+
+    <a href="scan-reports.html" class="feature-card">
+      <div class="icon-circle cyan">🩻</div>
+      <span>Scan / Imaging Reports</span>
+      <span class="arrow">›</span>
+    </a>
+
+    <a href="prescriptions.html" class="feature-card">
+      <div class="icon-circle pink">💊</div>
+      <span>Prescriptions</span>
+      <span class="arrow">›</span>
+    </a>
+
+    <a href="appointments.html" class="feature-card">
+      <div class="icon-circle purple">📅</div>
+      <span>Appointment & Consultation</span>
+      <span class="arrow">›</span>
+    </a>
+
+    <a href="hospital-records.html" class="feature-card">
+      <div class="icon-circle orange">🏥</div>
+      <span>Hospital / Admission Records</span>
+      <span class="arrow">›</span>
+    </a>
+
+    <a href="vaccination.html" class="feature-card">
+      <div class="icon-circle green">💉</div>
+      <span>Vaccination / Immunization</span>
+      <span class="arrow">›</span>
+    </a>
+
+    <a href="health-cards.html" class="feature-card">
+      <div class="icon-circle yellow">📑</div>
+      <span>Health Cards / Certificates</span>
+      <span class="arrow">›</span>
+    </a>
+
+    <a href="other-records.html" class="feature-card">
+      <div class="icon-circle gray">📂</div>
+      <span>Other Records</span>
+      <span class="arrow">›</span>
+    </a>
+  </div>
+</section>
+<!-- Hospital Search Section -->
+<section class="hospital-search">
+    <h2>EXPLORE</h2>
+    <h3>Hospitals Across India</h3>
+
+    <div class="states-container">
+        <h2 class="states-title">
+            <i class="fas fa-map-marker-alt"></i> Browse Hospitals by State
+        </h2>
+        
+        <div class="state-list">
+            <div class="state-card" onclick="openStateHospitals('andhra-pradesh')">
+                <div class="state-name">Andhra Pradesh</div>
+                <div class="hospital-count">55+ Hospitals</div>
+                <div class="state-arrow">→</div>
+            </div>
+            
+            <div class="state-card" onclick="openStateHospitals('telangana')">
+                <div class="state-name">Telangana & Hyderabad</div>
+                <div class="hospital-count">67+ Hospitals</div>
+                <div class="state-arrow">→</div>
+            </div>
+            
+            <div class="state-card" onclick="openStateHospitals('tamil-nadu')">
+                <div class="state-name">Tamil Nadu</div>
+                <div class="hospital-count">89+ Hospitals</div>
+                <div class="state-arrow">→</div>
+            </div>
+            
+            <div class="state-card" onclick="openStateHospitals('maharashtra')">
+                <div class="state-name">Maharashtra & Mumbai</div>
+                <div class="hospital-count">229+ Hospitals</div>
+                <div class="state-arrow">→</div>
+            </div>
+            
+            <div class="state-card" onclick="openStateHospitals('delhi')">
+                <div class="state-name">Delhi & NCR</div>
+                <div class="hospital-count">102+ Hospitals</div>
+                <div class="state-arrow">→</div>
+            </div>
+            
+            <div class="state-card" onclick="openStateHospitals('karnataka')">
+                <div class="state-name">Karnataka & Bangalore</div>
+                <div class="hospital-count">176+ Hospitals</div>
+                <div class="state-arrow">→</div>
+            </div>
+            
+            <div class="state-card" onclick="openStateHospitals('west-bengal')">
+                <div class="state-name">West Bengal & Kolkata</div>
+                <div class="hospital-count">65+ Hospitals</div>
+                <div class="state-arrow">→</div>
+            </div>
+            
+            <div class="state-card view-all-card" onclick="openAllStates()">
+                <div class="state-name">View All States</div>
+                <div class="hospital-count">28+ States</div>
+                <div class="state-arrow">→</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <!-- How to use -->
+  <section class="how-to">
+    <h2>How to Use MediLocker</h2>
+    <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" allowfullscreen></iframe>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 MediLocker. All Rights Reserved.</p>
+    <div>
+      <a href="#">About Us</a> | 
+      <a href="#">Help</a> | 
+      <a href="#">Privacy Policy</a> | 
+      <a href="#">Contact</a>
+    </div>
+  </footer>
+<script src="script.js"></script>
+</body>
+</html>

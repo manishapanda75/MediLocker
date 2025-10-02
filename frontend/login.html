@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - MediLocker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            display: flex;
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            min-height: 600px;
+        }
+
+        .left-panel {
+            flex: 1;
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e3d6f 100%);
+            color: white;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .left-panel::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .left-panel::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .features {
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .feature i {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            color: #4CAF50;
+        }
+
+        .right-panel {
+            flex: 1;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .form-header h2 {
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .input-with-icon {
+            position: relative;
+        }
+
+        .input-with-icon i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            z-index: 2;
+        }
+
+        .input-with-icon input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .input-with-icon input:focus {
+            outline: none;
+            border-color: #2c5aa0;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+
+        .remember-me input {
+            margin-right: 8px;
+        }
+
+        .forgot-password {
+            color: #2c5aa0;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e3d6f 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 25px;
+        }
+
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(44, 90, 160, 0.3);
+        }
+
+        .login-button:active {
+            transform: translateY(0);
+        }
+
+        .divider {
+            text-align: center;
+            margin: 25px 0;
+            position: relative;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e1e5e9;
+        }
+
+        .divider span {
+            background: white;
+            padding: 0 15px;
+            position: relative;
+        }
+
+        .social-login {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .social-btn.google { color: #DB4437; }
+        .social-btn.facebook { color: #4267B2; }
+        .social-btn.apple { color: #000; }
+
+        .social-btn:hover {
+            border-color: #2c5aa0;
+            transform: translateY(-1px);
+        }
+
+        .signup-link {
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .signup-link a {
+            color: #2c5aa0;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        .back-home {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-home a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-home a:hover {
+            color: #2c5aa0;
+        }
+
+        /* Tabs for Login/Signup */
+        .form-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e1e5e9;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .tab.active {
+            color: #2c5aa0;
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #2c5aa0;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .form-content {
+            display: none;
+        }
+
+        .form-content.active {
+            display: block;
+        }
+
+        /* Validation styles */
+        .error-message {
+            color: #dc3545;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .input-with-icon input.error {
+            border-color: #dc3545;
+            background: #fff5f5;
+        }
+
+        .input-with-icon input.success {
+            border-color: #28a745;
+            background: #f8fff9;
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                flex-direction: column;
+                max-width: 400px;
+            }
+            
+            .left-panel {
+                padding: 30px;
+            }
+            
+            .right-panel {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <!-- Left Panel - Branding -->
+        <div class="left-panel">
+            <div class="logo">MediLocker</div>
+            <div class="tagline">Your Health, Always Protected</div>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Military-grade encryption for your medical data</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-clock"></i>
+                    <span>24/7 Access to your health records</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-hospital"></i>
+                    <span>Connect with hospitals seamlessly</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Access from any device, anywhere</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel - Login/Signup Forms -->
+        <div class="right-panel">
+            <div class="form-header">
+                <h2>Welcome to MediLocker</h2>
+                <p>Secure your medical records in one place</p>
+            </div>
+
+            <!-- Tabs -->
+            <div class="form-tabs">
+                <button class="tab active" data-tab="login">Login</button>
+                <button class="tab" data-tab="signup">Sign Up</button>
+            </div>
+
+            <!-- Login Form -->
+            <div class="form-content active" id="loginForm">
+                <form id="loginFormData">
+                    <div class="form-group">
+                        <label for="username">Email Address</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="username" placeholder="Enter your email address" required>
+                        </div>
+                        <div class="error-message" id="usernameError">Please enter a valid email address</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" placeholder="Enter your password" required minlength="6">
+                        </div>
+                        <div class="error-message" id="passwordError">Password must be at least 6 characters long</div>
+                    </div>
+
+                    <div class="remember-forgot">
+                        <label class="remember-me">
+                            <input type="checkbox" id="rememberMe">
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="login-button">
+                        Sign In to MediLocker
+                    </button>
+                </form>
+
+                <div class="divider">
+                    <span>Or continue with</span>
+                </div>
+
+                <div class="social-login">
+                    <button class="social-btn google">
+                        <i class="fab fa-google"></i>
+                    </button>
+                    <button class="social-btn facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </button>
+                    <button class="social-btn apple">
+                        <i class="fab fa-apple"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sign Up Form -->
+            <div class="form-content" id="signupForm">
+                <form id="signupFormData">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="fullName" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="error-message" id="fullNameError">Please enter your full name</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="error-message" id="emailError">Please enter a valid email address</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newUsername">Username</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-at"></i>
+                            <input type="text" id="newUsername" placeholder="Choose a username" required>
+                        </div>
+                        <div class="error-message" id="usernameErrorSignup">Please choose a username</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newPassword">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="newPassword" placeholder="Create a password (min. 6 characters)" required minlength="6">
+                        </div>
+                        <div class="error-message" id="passwordErrorSignup">Password must be at least 6 characters long</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="confirmPassword" placeholder="Confirm your password" required minlength="6">
+                        </div>
+                        <div class="error-message" id="confirmPasswordError">Passwords do not match</div>
+                    </div>
+
+                    <button type="submit" class="login-button">
+                        Create Account
+                    </button>
+                </form>
+
+                <div class="signup-link">
+                    Already have an account? <a href="#" class="switch-to-login">Sign In</a>
+                </div>
+            </div>
+
+            <div class="back-home">
+                <a href="index.html">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Homepage
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        const tabs = document.querySelectorAll('.tab');
+        const formContents = document.querySelectorAll('.form-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetTab = tab.getAttribute('data-tab');
+                
+                // Update active tab
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Show corresponding form
+                formContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === targetTab + 'Form') {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Switch to login from signup link
+        document.querySelector('.switch-to-login')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.querySelector('[data-tab="login"]').click();
+        });
+
+        // Validation functions
+        function isValidEmail(email) {
+            return email.includes('@') && email.includes('.') && email.length > 5;
+        }
+
+        function isValidPassword(password) {
+            return password.length >= 6;
+        }
+
+        function showError(inputId, errorId, message) {
+            const input = document.getElementById(inputId);
+            const error = document.getElementById(errorId);
+            input.classList.add('error');
+            input.classList.remove('success');
+            error.textContent = message;
+            error.style.display = 'block';
+        }
+
+        function showSuccess(inputId, errorId) {
+            const input = document.getElementById(inputId);
+            const error = document.getElementById(errorId);
+            input.classList.remove('error');
+            input.classList.add('success');
+            error.style.display = 'none';
+        }
+
+        function clearValidation(inputId, errorId) {
+            const input = document.getElementById(inputId);
+            const error = document.getElementById(errorId);
+            input.classList.remove('error', 'success');
+            error.style.display = 'none';
+        }
+
+        // Real-time validation for login form
+        document.getElementById('username').addEventListener('input', function() {
+            if (this.value.trim() === '') {
+                clearValidation('username', 'usernameError');
+            } else if (!isValidEmail(this.value)) {
+                showError('username', 'usernameError', 'Please enter a valid email address');
+            } else {
+                showSuccess('username', 'usernameError');
+            }
+        });
+
+        document.getElementById('password').addEventListener('input', function() {
+            if (this.value.trim() === '') {
+                clearValidation('password', 'passwordError');
+            } else if (!isValidPassword(this.value)) {
+                showError('password', 'passwordError', 'Password must be at least 6 characters long');
+            } else {
+                showSuccess('password', 'passwordError');
+            }
+        });
+
+        // Real-time validation for signup form
+        document.getElementById('email').addEventListener('input', function() {
+            if (this.value.trim() === '') {
+                clearValidation('email', 'emailError');
+            } else if (!isValidEmail(this.value)) {
+                showError('email', 'emailError', 'Please enter a valid email address');
+            } else {
+                showSuccess('email', 'emailError');
+            }
+        });
+
+        document.getElementById('newPassword').addEventListener('input', function() {
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (this.value.trim() === '') {
+                clearValidation('newPassword', 'passwordErrorSignup');
+            } else if (!isValidPassword(this.value)) {
+                showError('newPassword', 'passwordErrorSignup', 'Password must be at least 6 characters long');
+            } else {
+                showSuccess('newPassword', 'passwordErrorSignup');
+            }
+
+            // Also validate confirm password if it has value
+            if (confirmPassword) {
+                if (this.value !== confirmPassword) {
+                    showError('confirmPassword', 'confirmPasswordError', 'Passwords do not match');
+                } else {
+                    showSuccess('confirmPassword', 'confirmPasswordError');
+                }
+            }
+        });
+
+        document.getElementById('confirmPassword').addEventListener('input', function() {
+            const newPassword = document.getElementById('newPassword').value;
+            
+            if (this.value.trim() === '') {
+                clearValidation('confirmPassword', 'confirmPasswordError');
+            } else if (this.value !== newPassword) {
+                showError('confirmPassword', 'confirmPasswordError', 'Passwords do not match');
+            } else {
+                showSuccess('confirmPassword', 'confirmPasswordError');
+            }
+        });
+
+        // Login form submission
+        document.getElementById('loginFormData').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+
+            let isValid = true;
+
+            // Validate email
+            if (!username || !isValidEmail(username)) {
+                showError('username', 'usernameError', 'Please enter a valid email address');
+                isValid = false;
+            }
+
+            // Validate password
+            if (!password || !isValidPassword(password)) {
+                showError('password', 'passwordError', 'Password must be at least 6 characters long');
+                isValid = false;
+            }
+
+            if (!isValid) {
+                return;
+            }
+
+            const loginBtn = this.querySelector('.login-button');
+            const originalText = loginBtn.textContent;
+            loginBtn.textContent = 'Signing In...';
+            loginBtn.disabled = true;
+
+            setTimeout(() => {
+                // Accept any valid email and password with min 6 chars
+                if (isValidEmail(username) && isValidPassword(password)) {
+                    if (rememberMe) {
+                        localStorage.setItem('rememberMe', 'true');
+                        localStorage.setItem('userEmail', username);
+                    }
+                    alert('Login successful!');
+                    window.location.href = 'dashboard.html';
+                } else {
+                    alert('Please check your credentials and try again.');
+                    loginBtn.textContent = originalText;
+                    loginBtn.disabled = false;
+                }
+            }, 1500);
+        });
+
+        // Signup form submission
+        document.getElementById('signupFormData').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const newUsername = document.getElementById('newUsername').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            let isValid = true;
+
+            // Validate all fields
+            if (!fullName) {
+                showError('fullName', 'fullNameError', 'Please enter your full name');
+                isValid = false;
+            }
+
+            if (!email || !isValidEmail(email)) {
+                showError('email', 'emailError', 'Please enter a valid email address');
+                isValid = false;
+            }
+
+            if (!newUsername) {
+                showError('newUsername', 'usernameErrorSignup', 'Please choose a username');
+                isValid = false;
+            }
+
+            if (!newPassword || !isValidPassword(newPassword)) {
+                showError('newPassword', 'passwordErrorSignup', 'Password must be at least 6 characters long');
+                isValid = false;
+            }
+
+            if (!confirmPassword || newPassword !== confirmPassword) {
+                showError('confirmPassword', 'confirmPasswordError', 'Passwords do not match');
+                isValid = false;
+            }
+
+            if (!isValid) {
+                return;
+            }
+
+            const signupBtn = this.querySelector('.login-button');
+            const originalText = signupBtn.textContent;
+            signupBtn.textContent = 'Creating Account...';
+            signupBtn.disabled = true;
+
+            setTimeout(() => {
+                alert('Account created successfully! You can now login with your credentials.');
+                document.querySelector('[data-tab="login"]').click();
+                signupBtn.textContent = originalText;
+                signupBtn.disabled = false;
+                this.reset();
+                
+                // Clear all validation states
+                const allInputs = this.querySelectorAll('input');
+                const allErrors = this.querySelectorAll('.error-message');
+                allInputs.forEach(input => input.classList.remove('error', 'success'));
+                allErrors.forEach(error => error.style.display = 'none');
+            }, 1500);
+        });
+
+        // Input animations
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+
+        // Check if remember me was previously set
+        if (localStorage.getItem('rememberMe') === 'true') {
+            document.getElementById('rememberMe').checked = true;
+            const savedEmail = localStorage.getItem('userEmail');
+            if (savedEmail) {
+                document.getElementById('username').value = savedEmail;
+            }
+        }
+    </script>
+</body>
+</html>
